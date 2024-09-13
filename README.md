@@ -1,18 +1,18 @@
-# ZIP Code Service
+# ZIP Code Service 🚀
 
 ## Overview
 This Spring Boot application allows you to manage ZIP code data through a RESTful API. It supports uploading ZIP code data from a CSV file, searching for specific ZIP codes, and finding nearby ZIP codes.
 
 ## Features
-- Upload ZIP code data in CSV format
-- Search for a specific ZIP code
-- Find nearby ZIP codes by radial distance
+- 📁 Upload ZIP code data in CSV format
+- 🔍 Search for a specific ZIP code
+- 🌍 Find nearby ZIP codes by radial distance
 
 ## Technologies Used
-- Java 17
-- Spring Boot
-- H2 Database
-- OpenCSV
+- ☕ Java 17
+- 🛠 Spring Boot
+- 🗄 H2 Database
+- 📊 OpenCSV
 
 ## Getting Started
 
@@ -31,6 +31,20 @@ This Spring Boot application allows you to manage ZIP code data through a RESTfu
    ```bash
    ./gradlew bootRun
    ```
+
+### Required CSV Data Format
+
+To upload ZIP code data, make sure your CSV file includes the following fields:
+
+| **Field Name**             | **Data Type** | **Description**                                       |
+|----------------------------|----------------|-------------------------------------------------------|
+| `stdZip5`                  | String         | Standard 5-digit ZIP code (required, unique)         |
+| `uspsZipPrefCity`         | String         | Preferred city name for the ZIP code                  |
+| `uspsZipPrefState`        | String         | State abbreviation for the ZIP code                   |
+| `latitude`                | Double         | Geographical latitude of the location                  |
+| `longitude`               | Double         | Geographical longitude of the location                 |
+| `x`                       | Double         | Unused coordinate (optional)                           |
+| `y`                       | Double         | Unused coordinate (optional)                           |
 
 ### APIs
 
@@ -60,5 +74,5 @@ This Spring Boot application allows you to manage ZIP code data through a RESTfu
   - Status 200 with a list of nearby ZIP codes if found
   - Status 404 if none found
 
-### Contributing
+### Contributing 🤝
 Feel free to open issues or submit pull requests for any improvements or features you'd like to see!
