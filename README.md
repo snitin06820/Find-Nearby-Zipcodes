@@ -26,32 +26,36 @@ This Spring Boot application allows you to manage ZIP code data through a RESTfu
    git clone <repository-url>
    cd zipcode-service
 
-Run the application using Gradle:
-bash
-./gradlew bootRun
-APIs
-Upload ZIP Code Data
-Endpoint: POST /uploadFile
-Request:
-Parameter: file (CSV file)
-Response:
-Status 200 if successful
-Status 400 if file is empty
-Status 500 on server error
-Get Data by ZIP Code
-Endpoint: GET /{stdZip5}
-Path Variable:
-stdZip5: The ZIP code to search for
-Response:
-Status 200 with ZIP data if found
-Status 404 if not found
-Get Nearby ZIP Codes
-Endpoint: GET /nearbyZipCodes
-Query Parameters:
-zipcode: The ZIP code to search nearby for
-radius: Optional radius in kilometers (default is 20)
-Response:
-Status 200 with a list of nearby ZIP codes if found
-Status 404 if none found
-Contributing
+2. Run the application using Gradle:
+   ```bash
+   ./gradlew bootRun
+
+ ###APIs
+ 1. Upload ZIP Code Data
+   Endpoint: POST /uploadFile
+   Request:
+      Parameter: file (CSV file)
+   Response:
+      Status 200 if successful
+      Status 400 if file is empty
+      Status 500 on server error
+
+   2. Get Data by ZIP Code
+   Endpoint: GET /{stdZip5}
+   Path Variable:
+      stdZip5: The ZIP code to search for
+      Response:
+         Status 200 with ZIP data if found
+         Status 404 if not found
+
+   3. Get Nearby ZIP Codes
+   Endpoint: GET /nearbyZipCodes
+   Query Parameters:
+      zipcode: The ZIP code to search nearby for
+      radius: Optional radius in kilometers (default is 20)
+   Response:
+      Status 200 with a list of nearby ZIP codes if found
+      Status 404 if none found
+
+###Contributing
 Feel free to open issues or submit pull requests for any improvements or features you'd like to see!
