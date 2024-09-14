@@ -46,7 +46,7 @@ To upload ZIP code data, make sure your CSV file includes the following fields:
 | `x`                       | Double         | Unused coordinate (optional)                           |
 | `y`                       | Double         | Unused coordinate (optional)                           |
 
-- Sample US Data `https://arcg.is/1DjevT0`
+- Sample US Zipcode Data `https://arcg.is/1DjevT0`
 
 ### APIs
 
