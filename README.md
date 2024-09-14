@@ -5,14 +5,13 @@ This Spring Boot application allows you to manage ZIP code data through a RESTfu
 
 ## Features
 - 📁 Upload ZIP code data in CSV format
-- 🔍 Search for a specific ZIP code
+- 🔍 Fetch data of specific ZIP code
 - 🌍 Find nearby ZIP codes by radial distance
 
 ## Technologies Used
 - ☕ Java 17
 - 🛠 Spring Boot
-- 🗄 H2 Database
-- 📊 OpenCSV
+- 🗄 SQL Database
 
 ## Getting Started
 
