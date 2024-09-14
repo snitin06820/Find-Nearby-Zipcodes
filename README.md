@@ -47,33 +47,8 @@ To upload ZIP code data, make sure your CSV file includes the following fields:
 
 - Sample US Zipcode Data `https://arcg.is/1DjevT0`
 
-### APIs
-
-#### 1. Upload ZIP Code Data
-- **Endpoint**: `POST /uploadFile`
-- **Request**: 
-  - Parameter: `file` (CSV file)
-- **Response**:
-  - Status 200 if successful
-  - Status 400 if file is empty
-  - Status 500 on server error
-
-#### 2. Get Data by ZIP Code
-- **Endpoint**: `GET /{stdZip5}`
-- **Path Variable**: 
-  - `stdZip5`: The ZIP code to search for
-- **Response**:
-  - Status 200 with ZIP data if found
-  - Status 404 if not found
-
-#### 3. Get Nearby ZIP Codes
-- **Endpoint**: `GET /nearbyZipCodes`
-- **Query Parameters**: 
-  - `zipcode`: The ZIP code to search nearby for
-  - `radius`: Optional radius in kilometers (default is 20)
-- **Response**:
-  - Status 200 with a list of nearby ZIP codes if found
-  - Status 404 if none found
+### API Documentation
+For detailed API usage and endpoints, refer to the [API Documentation](https://snitin06820.github.io/Finding-Nearby-Zipcodes/).
 
 ### Contributing 🤝
 Feel free to open issues or submit pull requests for any improvements or features you'd like to see!
