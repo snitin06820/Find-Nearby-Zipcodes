@@ -45,7 +45,7 @@ To upload ZIP code data, make sure your CSV file includes the following fields:
 | `x`                       | Double         | Unused coordinate (optional)                           |
 | `y`                       | Double         | Unused coordinate (optional)                           |
 
-- Sample US Zipcode Data `https://arcg.is/1DjevT0`
+- ###[Sample US Zipcode Data](https://arcg.is/1DjevT0)
 
 ### API Documentation
 For detailed API usage and endpoints, refer to the [API Documentation](https://snitin06820.github.io/Finding-Nearby-Zipcodes/).
