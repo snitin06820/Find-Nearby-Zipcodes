@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Find Nearby ZipCode APIs",
+    "version": "1.0.0",
+    "description": "API Documentation and Related Data"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/uploadFile": {
+      "post": {
+        "summary": "Upload a CSV file containing zip locations",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "CSV file containing zip locations"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Upload a CSV file and save the zip locations"
+        },
+        "responses": {
+          "200": {
+            "description": "File uploaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "File uploaded and processed successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, no file uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Please select a file to upload"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "An error occurred while processing the file"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{stdZip5}": {
+      "get": {
+        "summary": "Retrieve data by zipcode",
+        "parameters": [
+          {
+            "name": "stdZip5",
+            "in": "path",
+            "required": true,
+            "description": "Standard 5-digit zipcode",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Found data for the given zipcode",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZipLocation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Zipcode not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Data for zipcode 'xxxxx' not found."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nearbyZipCodes": {
+      "get": {
+        "summary": "Retrieve nearby zip codes within a specified radius",
+        "parameters": [
+          {
+            "name": "zipcode",
+            "in": "query",
+            "required": true,
+            "description": "Zipcode to find nearby locations",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in kilometers",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of nearby zip codes",
+            "content": {
+              "application/json": {
+                schema: {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ZipLocation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No nearby zip codes found",
+            "content": {
+              "application/json": {
+                schema: {
+                  "type": "string",
+                  "example": "No zipcodes found nearby 20 Kms"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ZipLocation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stdZip5": {
+            "type": "string"
+          },
+          "uspsZipPrefCity": {
+            "type": "string"
+          },
+          "uspsZipPrefState": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    }
+  }
+}
