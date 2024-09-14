@@ -4,6 +4,7 @@ import com.nitin.finding_nearby_zipcodes.entity.ZipLocation;
 import com.nitin.finding_nearby_zipcodes.service.ZiplocationService;
 import com.nitin.finding_nearby_zipcodes.utils.CsvUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,7 @@ public class ZipLocationController {
     }
 
     @GetMapping("/{stdZip5}")
+    @Cacheable("zipcode")
     public ResponseEntity<Object> getDataByZipcode(@PathVariable String stdZip5) {
         ZipLocation data = zipLocationService.getDataByZipcode(stdZip5);
         if (data != null) {
@@ -46,6 +48,7 @@ public class ZipLocationController {
     }
 
     @GetMapping("/nearbyZipCodes")
+    @Cacheable("nearby_zipcode")
     public ResponseEntity<?> getNearbyZipCodes(@RequestParam String zipcode,
                                                @RequestParam(defaultValue = "20") int radius) {
         List<ZipLocation> nearbyZipCodes = zipLocationService.getNearbyZipcodes(zipcode, radius);

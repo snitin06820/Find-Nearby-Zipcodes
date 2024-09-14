@@ -23,8 +23,6 @@ public class CsvUtils {
                     zipLocation.setUspsZipPrefState(line[3].trim());
                     zipLocation.setLatitude(Double.parseDouble(line[4].trim()));
                     zipLocation.setLongitude(Double.parseDouble(line[5].trim()));
-                    zipLocation.setX(Double.parseDouble(line[6].trim()));
-                    zipLocation.setY(Double.parseDouble(line[7].trim()));
                     zipLocations.add(zipLocation);
                 }
             }

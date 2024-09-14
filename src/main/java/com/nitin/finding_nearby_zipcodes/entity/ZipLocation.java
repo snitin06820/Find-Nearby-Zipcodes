@@ -19,7 +19,5 @@ public class ZipLocation {
     private String uspsZipPrefState;
     private Double latitude;
     private Double longitude;
-    private Double x;
-    private Double y;
 }
 

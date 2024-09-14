@@ -5,7 +5,7 @@ import com.nitin.finding_nearby_zipcodes.entity.ZipLocation;
 import java.util.List;
 
 public interface ZiplocationService {
-    public void saveZipLocation(ZipLocation zipLocation);
-    public ZipLocation getDataByZipcode(String zipcode);
-    public List<ZipLocation> getNearbyZipcodes(String zipcode, Integer radius);
+    void saveZipLocation(ZipLocation zipLocation);
+    ZipLocation getDataByZipcode(String zipcode);
+    List<ZipLocation> getNearbyZipcodes(String zipcode, Integer radius);
 }
