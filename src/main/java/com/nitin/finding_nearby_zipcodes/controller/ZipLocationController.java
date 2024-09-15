@@ -3,6 +3,7 @@ package com.nitin.finding_nearby_zipcodes.controller;
 import com.nitin.finding_nearby_zipcodes.entity.ZipLocation;
 import com.nitin.finding_nearby_zipcodes.service.ZiplocationService;
 import com.nitin.finding_nearby_zipcodes.utils.CsvUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
+@Slf4j
 public class ZipLocationController {
 
     @Autowired
@@ -29,6 +31,7 @@ public class ZipLocationController {
         try {
             List<ZipLocation> zipLocations = CsvUtils.parseCsvFile(file.getInputStream());
             zipLocations.forEach(zipLocationService::saveZipLocation);
+            log.info("ziplocation data: {}", zipLocations);
             return ResponseEntity.ok("File uploaded and processed successfully");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
